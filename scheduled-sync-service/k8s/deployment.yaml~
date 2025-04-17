@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scheduled-sync-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scheduled-sync-service
+  template:
+    metadata:
+      labels:
+        app: scheduled-sync-service
+    spec:
+      containers:
+        - name: scheduled-sync-service
+          image: scheduled-sync-service:latest
+          ports:
+            - containerPort: 8085
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-service:9092"
+            - name: DESTINATION_SERVICE_URL
+              value: "http://destination-service:8082"

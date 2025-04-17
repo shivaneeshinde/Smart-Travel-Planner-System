@@ -1,0 +1,4 @@
+package com.stps.notification_service.service;
+
+public class NotificationService {
+}

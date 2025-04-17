@@ -1,0 +1,4 @@
+package com.stps.scheduled_sync_service.publisher;
+
+public class KafkaPublisher {
+}

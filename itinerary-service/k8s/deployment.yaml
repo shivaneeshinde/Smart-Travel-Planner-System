@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itinerary-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: itinerary-service
+  template:
+    metadata:
+      labels:
+        app: itinerary-service
+    spec:
+      containers:
+        - name: itinerary-service
+          image: itinerary-service:latest
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-service:9092"
+            - name: USER_SERVICE_URL
+              value: "http://user-service:8081"
+            - name: DESTINATION_SERVICE_URL
+              value: "http://destination-service:8082"

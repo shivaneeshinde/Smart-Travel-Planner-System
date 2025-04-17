@@ -1,0 +1,14 @@
+# Use OpenJDK 11 base image
+FROM openjdk:11-jre-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the jar file into the container
+COPY target/scheduled-sync-service-0.0.1-SNAPSHOT.jar /app/scheduled-sync-service.jar
+
+# Expose the application port
+EXPOSE 8085
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "scheduled-sync-service.jar"]
