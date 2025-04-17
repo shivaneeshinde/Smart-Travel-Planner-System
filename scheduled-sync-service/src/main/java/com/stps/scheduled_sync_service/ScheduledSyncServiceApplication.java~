@@ -2,16 +2,16 @@ package com.stps.scheduled_sync_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.scheduling.annotation.EnableScheduling;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.kafka.core.KafkaTemplate;
-//import org.springframework.scheduling.annotation.Scheduled;
-//import org.springframework.web.client.RestTemplate;
-//import java.util.Map;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.client.RestTemplate;
+import java.util.Map;
 
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
 public class ScheduledSyncServiceApplication {
 
 	public static void main(String[] args) {

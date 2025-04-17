@@ -1,0 +1,21 @@
+package com.stps.destination_service.model;
+
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Data
+public class Destination {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String country;
+    private String city;
+    private String type; // e.g., beach, mountain, historic
+    private String weather;
+    private String countryInfo;
+}

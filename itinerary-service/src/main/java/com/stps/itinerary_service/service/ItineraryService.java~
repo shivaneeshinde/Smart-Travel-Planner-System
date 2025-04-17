@@ -1,0 +1,70 @@
+//package com.stps.itinerary_service.service;
+//
+//import com.stps.itinerary_service.model.Itinerary;
+//import com.stps.itinerary_service.repository.ItineraryRepository;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//import org.springframework.web.client.RestTemplate;
+//
+//import java.util.List;
+//import java.util.Optional;
+//
+//@Service
+//public class ItineraryService {
+//    @Autowired
+//    private ItineraryRepository repository;
+//
+//    private final RestTemplate restTemplate = new RestTemplate();
+//
+//    private final String userServiceUrl = "http://localhost:8081/users/";
+//    private final String destinationServiceUrl = "http://localhost:8082/destinations/";
+//
+//    public Itinerary createItinerary(Itinerary itinerary) {
+//        if (!validateUser(itinerary.getUserId())) {
+//            throw new RuntimeException("User not found: " + itinerary.getUserId());
+//        }
+//
+//        for (Long destId : itinerary.getDestinationIds()) {
+//            if (!validateDestination(destId)) {
+//                throw new RuntimeException("Destination not found: " + destId);
+//            }
+//        }
+//
+//        return repository.save(itinerary);
+//    }
+//
+//    private boolean validateUser(Long userId) {
+//        try {
+//            restTemplate.getForObject(userServiceUrl + userId, String.class);
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
+//
+//    private boolean validateDestination(Long destinationId) {
+//        try {
+//            restTemplate.getForObject(destinationServiceUrl + destinationId, String.class);
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
+//
+//    public List<Itinerary> getAll() {
+//        return repository.findAll();
+//    }
+//
+//    public Optional<Itinerary> getById(Long id) {
+//        return repository.findById(id);
+//    }
+//
+//    public Itinerary updateItinerary(Long id, Itinerary itinerary) {
+//        itinerary.setId(id);
+//        return createItinerary(itinerary);
+//    }
+//
+//    public void deleteItinerary(Long id) {
+//        repository.deleteById(id);
+//    }
+//}

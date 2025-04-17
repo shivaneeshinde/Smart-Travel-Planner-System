@@ -1,0 +1,6 @@
+//package com.stps.usermngt_service.repository;
+//
+//import com.stps.usermngt_service.model.User;
+//
+//public interface UserRepository extends JpaRepository<User, Long> {
+//}
