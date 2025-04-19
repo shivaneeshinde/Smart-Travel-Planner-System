@@ -1,0 +1,31 @@
+server:
+  port: 8080  # Gateway Port
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE  # Service name in Eureka, using load balancer (LB)
+          predicates:
+            - Path=/user/**  # Route requests with path "/user/**" to USER-SERVICE
+
+        - id: destination-service
+          uri: lb://DESTINATION-SERVICE  # Service name in Eureka
+          predicates:
+            - Path=/destination/**  # Route requests with path "/destination/**" to DESTINATION-SERVICE
+
+        - id: itinerary-service
+          uri: lb://ITINERARY-SERVICE  # Service name in Eureka
+          predicates:
+            - Path=/itinerary/**  # Route requests with path "/itinerary/**" to ITINERARY-SERVICE
+
+        - id: notification-service
+          uri: lb://NOTIFICATION-SERVICE  # Service name in Eureka
+          predicates:
+            - Path=/notification/**  # Route requests with path "/notification/**" to NOTIFICATION-SERVICE
+
+        - id: scheduled-sync-service
+          uri: lb://SCHEDULED-SYNC-SERVICE  # Service name in Eureka
+          predicates:
+            - Path=/sync/**  # Route requests with path "/sync/**" to SCHEDULED-SYNC-SERVICE
